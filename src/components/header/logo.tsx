@@ -11,7 +11,7 @@ export default function Logo() {
   return (
     <Link href="/">
       <div className="flex flex-col items-center">
-        <p className="text-4xl font-bold tracking-wider">JOMI</p>
+        <Image src="/Jomi_logoweb.png" alt="Logo de JOMI" width={150} height={100} />
       </div>
     </Link>
   )
