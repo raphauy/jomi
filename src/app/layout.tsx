@@ -12,8 +12,8 @@ import { GeistSans } from "geist/font";
 import { MobileSidebar } from '@/components/header/_mobile/mobile-sidebar'
 
 export const metadata: Metadata = {
-  title: 'Nextjs Starter kit',
-  description: 'Nextjs Starter kit by RC',
+  title: 'JOMI Representaciones',
+  description: 'Somos JOMI Representaciones. Distribuidores y representantes oficiales de marcas LÍDERES a nivel mundial.',
   icons: {
     icon: "/favicon.ico",
   },  
