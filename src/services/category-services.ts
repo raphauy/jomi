@@ -10,8 +10,8 @@ export type CategoryDAO = {
 
 export const categoryFormSchema = z.object({
 	name: z.string({required_error: "Name is required."}),
-	description: z.string().nullable(),
-	icon: z.string().nullable(),
+	description: z.string().optional(),
+	icon: z.string().optional(),
 })
 export type CategoryFormValues = z.infer<typeof categoryFormSchema>
 

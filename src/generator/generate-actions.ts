@@ -54,7 +54,7 @@ export async function createOrUpdate${modelNameCapitalized}Action(id: string | n
       updated= await create${modelNameCapitalized}(data)
   }     
 
-  revalidatePath("${frontendPath}/${modelNameUnCapitalized}s")
+  revalidatePath("/")
 
   return updated as ${modelNameCapitalized}DAO
 }
@@ -62,7 +62,7 @@ export async function createOrUpdate${modelNameCapitalized}Action(id: string | n
 export async function delete${modelNameCapitalized}Action(id: string): Promise<${modelNameCapitalized}DAO | null> {    
   const deleted= await delete${modelNameCapitalized}(id)
 
-  revalidatePath("${frontendPath}/${modelNameUnCapitalized}s")
+  revalidatePath("/")
 
   return deleted as ${modelNameCapitalized}DAO
 }

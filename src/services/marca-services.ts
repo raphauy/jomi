@@ -12,8 +12,8 @@ export type MarcaDAO = {
 
 export const marcaFormSchema = z.object({
 	name: z.string({required_error: "Name is required."}),
-	description: z.string().nullable(),
-	href: z.string().nullable(),
+	description: z.string().optional(),
+	href: z.string().optional(),
 })
 export type MarcaFormValues = z.infer<typeof marcaFormSchema>
 

@@ -78,11 +78,11 @@ function generateZodSchema(modelName: string, modelDefinition: string): string {
         const [fieldName, fieldType] = line.trim().split(/\s+/)
         const optional = fieldType.endsWith('?')
         const validation = optional
-          ? '.nullable()'
+          ? '.optional()'
           : `{required_error: "${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} is required."}`
         
         if (optional)
-            return `\t${fieldName}: z.string().nullable(),`
+            return `\t${fieldName}: z.string().optional(),`
   
         return `\t${fieldName}: z.string(${validation}),`
       })

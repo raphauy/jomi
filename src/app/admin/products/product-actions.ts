@@ -15,7 +15,7 @@ export async function createOrUpdateProductAction(id: string | null, data: Produ
       updated= await createProduct(data)
   }     
 
-  revalidatePath("/admin/products")
+  revalidatePath("/")
 
   return updated as ProductDAO
 }
@@ -23,7 +23,7 @@ export async function createOrUpdateProductAction(id: string | null, data: Produ
 export async function deleteProductAction(id: string): Promise<ProductDAO | null> {    
   const deleted= await deleteProduct(id)
 
-  revalidatePath("/admin/products")
+  revalidatePath("/")
 
   return deleted as ProductDAO
 }
