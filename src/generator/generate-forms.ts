@@ -80,6 +80,11 @@ export function ${modelNameUperCase}Form({ id, closeDialog }: Props) {
         if (data) {
           form.reset(data)
         }
+        Object.keys(form.getValues()).forEach((key: any) => {
+          if (form.getValues(key) === null) {
+            form.setValue(key, "")
+          }
+        })
       })
     }
   }, [form, id])
