@@ -8,8 +8,9 @@ import Menu from '@/components/header/menu'
 import { TailwindIndicator } from '@/components/shadcn/tailwind-indicator'
 import { cn } from '@/lib/utils'
 import getSession from '@/lib/auth'
-import { GeistSans } from "geist/font";
 import { MobileSidebar } from '@/components/header/_mobile/mobile-sidebar'
+import { butlerBlack, butlerBold, butlerLight, butlerMedium, butlerRegular, helveticaBlack, helveticaBold, helveticaHeavy, helveticaMedium, helveticaRoman, helveticaThin } from '@/lib/fonts'
+
 
 export const metadata: Metadata = {
   title: 'JOMI Representaciones',
@@ -33,7 +34,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     <>
       <html lang="es" suppressHydrationWarning>
         <head />
-        <body className={cn("min-h-screen bg-background font-sans antialiased", GeistSans.className)}>
+        <body className={cn("min-h-screen bg-background font-sans antialiased", helveticaMedium.className)}>
             <SessionProvider session={session}>
           
 
