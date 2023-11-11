@@ -24,7 +24,7 @@ export default function MenuComponent({ menu }: Props) {
 
                     <NavigationMenuItem key={index}>
                         <NavigationMenuTrigger>
-                          <Link href={item.href} className="uppercase">
+                          <Link href={item.href} className="uppercase text-lg tracking-tighter">
                             {item.key}
                           </Link>
                         </NavigationMenuTrigger>
@@ -56,7 +56,7 @@ function simpleItem(menu: MenuType) {
 
     return (
         <Link key={menu.key} href={menu.href}>
-          <Button variant="ghost" className="uppercase">{menu.key}
+          <Button variant="ghost" className="uppercase text-lg tracking-tighter">{menu.key}
           </Button>
         </Link>
     )

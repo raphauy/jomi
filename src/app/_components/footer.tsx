@@ -22,9 +22,10 @@ export default function Footer() {
           <Link href="mailto:administracion@jomirepresentaciones.com.uy" target="_blank" className="flex">
             <Mail className="pr-1 -ml-0.5 h-4" /><p className="pt-0.5">administracion@jomirepresentaciones.com.uy</p>
           </Link>
-          <p className="flex">
-            <Smartphone className="pr-1 -ml-0.5 h-4" /><p className="pt-0.5">091 835 717</p>
-          </p>
+          <div className="flex">
+            <Smartphone className="pr-1 -ml-0.5 h-4" />
+            <p className="pt-0.5">091 835 717</p>
+          </div>
           <div className="flex mt-4 -ml-1 gap-4 items-center">
             <Link href="https://www.facebook.com/profile.php?id=61553034430863" target="_blank">
               <Facebook className="h-6" />

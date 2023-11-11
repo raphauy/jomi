@@ -9,7 +9,7 @@ export default function HeroSection() {
 
       <div className="absolute inset-0 bg-black opacity-50" />
       <div className="z-0">
-        <h1 className={cn(butlerRegular.className, "text-5xl")}>
+        <h1 className={cn(butlerRegular.className, "text-6xl")}>
           Distribuidores y representantes de <br className="hidden lg:block" /> 
           marcas <span className={cn(butlerBold.className)}>líderes a nivel mundial</span>
         </h1>
