@@ -40,7 +40,7 @@ export const columns: ColumnDef<CategoryDAO>[] = [
   },
 
   {
-    accessorKey: "icon",
+    accessorKey: "image",
     header: ({ column }) => {
       return (
         <Button
@@ -48,7 +48,7 @@ export const columns: ColumnDef<CategoryDAO>[] = [
           className="pl-0 dark:text-white"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Icon
+          Image
           <ArrowUpDown className="w-4 h-4 ml-1" />
         </Button>
       );

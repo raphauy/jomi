@@ -54,7 +54,7 @@ export default function SideBar() {
 
   return (
     <div className="flex flex-col justify-between border-r border-r-osom-color/50">
-      <section className="flex flex-col gap-3 py-4 mt-3 ">
+      <div className="flex flex-col gap-3 py-4 mt-3 ">
         {data.map(({ href, icon: Icon, text }, index) => {
           if (href === "divider") return divider()
           
@@ -78,15 +78,15 @@ export default function SideBar() {
 
 
 
-      </section>
-      <section className="mb-4">
+      </div>
+      <div className="mb-4">
         {divider()}
         
         <Link href="/admin/config" className="flex gap-2 items-center py-1 mx-2 rounded hover:bg-gray-200 dark:hover:text-black">
           <Settings />
           <p className="hidden sm:block lg:w-36">Config</p>                  
         </Link>
-      </section>
+      </div>
     </div>
   );
 }

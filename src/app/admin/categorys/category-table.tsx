@@ -63,10 +63,10 @@ export function DataTableToolbar<TData>({
 
       <Input
         className="max-w-xs"
-        placeholder="icon filter..."
-        value={(table.getColumn("icon")?.getFilterValue() as string) ?? ""}
+        placeholder="image filter..."
+        value={(table.getColumn("image")?.getFilterValue() as string) ?? ""}
         onChange={(event) =>
-          table.getColumn("icon")?.setFilterValue(event.target.value)
+          table.getColumn("image")?.setFilterValue(event.target.value)
         }
       />
 

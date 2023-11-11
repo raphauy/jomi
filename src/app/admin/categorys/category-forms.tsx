@@ -104,12 +104,12 @@ export function CategoryForm({ id, closeDialog }: Props) {
 
           <FormField
             control={form.control}
-            name="icon"
+            name="image"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Icon</FormLabel>
+                <FormLabel>Image</FormLabel>
                 <FormControl>
-                  <Input placeholder="Category's icon" {...field} />
+                  <Input placeholder="Category's image" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

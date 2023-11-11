@@ -34,12 +34,12 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     <>
       <html lang="es" suppressHydrationWarning>
         <head />
-        <body className={cn("min-h-screen bg-background font-sans antialiased", helveticaMedium.className)}>
+        <body className={cn("min-h-screen bg-jomi-gris text-black antialiased", helveticaMedium.className)}>
             <SessionProvider session={session}>
           
 
             <ThemeProvider attribute="class" defaultTheme="light">
-              <div className="relative flex flex-col min-h-screen mt-1 text-muted-foreground">
+              <div className="relative flex flex-col min-h-screen mt-1">
                 <Header><Menu /></Header>
                 <MobileSidebar />
 

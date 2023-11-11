@@ -18,6 +18,7 @@ module.exports = {
     extend: {
       colors: {
         //"first-color": "rgb(74 222 128)",
+        "jomi-gris": "#efeae4",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -50,23 +51,6 @@ module.exports = {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
-        },
-        fontFamily: {
-          butlerBold: ['var(--font-butler-bold)'],
-          butlerBlack: ['var(--font-butler-black)'],
-          butlerLight: ['var(--font-butler-light)'],
-          butlerMedium: ['var(--font-butler-medium)'],
-          butlerRegular: ['var(--font-butler-regular)'],
-          butlerUltraLight: ['var(--font-butler-ultra-light)'],
-          fontawesome: ['var(--font-awesome)'],
-          helveticaBold: ['var(--font-helvetica-bold)'],
-          helveticaBlack: ['var(--font-helvetica-black)'],
-          helveticaHeavy: ['var(--font-helvetica-heavy)'],
-          helveticaIt: ['var(--font-helvetica-it)'],
-          helveticaLight: ['var(--font-helvetica-light)'],
-          helveticaMedium: ['var(--font-helvetica-medium)'],
-          helveticaRoman: ['var(--font-helvetica-roman)'],
-          helveticaThin: ['var(--font-helvetica-thin)'],     
         },
       },
       borderRadius: {
