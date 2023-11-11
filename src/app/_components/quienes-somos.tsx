@@ -8,8 +8,8 @@ export default function QuienesSomos() {
       <div className="flex flex-col md:flex-row">
         <Image src="/botella_v2.png" alt="Quiénes somos" width={600} height={300} className="max-w-md md:max-w-lg xl:max-w-xl" />
         <div className="flex-1 items-center flex flex-col justify-center">
-          <div>
-            <h2 className={cn(helveticaMedium.className, "text-4xl mt-8 md:mt-0")}>QUIÉNES SOMOS</h2>
+          <div className="py-10">
+            <h2 className={cn(helveticaMedium.className, "text-4xl mb-2")}>QUIÉNES SOMOS</h2>
 
             <p className="max-w-[384px] leading-5">
               Contamos con más de <span className="font-bold">30 años de experiencia </span>
