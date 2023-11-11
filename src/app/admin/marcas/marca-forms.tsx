@@ -101,6 +101,20 @@ export function MarcaForm({ id, closeDialog }: Props) {
 
           <FormField
             control={form.control}
+            name="image"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Image</FormLabel>
+                <FormControl>
+                  <Input placeholder="Marca's image" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
             name="href"
             render={({ field }) => (
               <FormItem>

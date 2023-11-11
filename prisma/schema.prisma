@@ -78,6 +78,7 @@ model Marca {
   id          String   @id @default(cuid())
   name        String
   description String?
+  image String?
   href        String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

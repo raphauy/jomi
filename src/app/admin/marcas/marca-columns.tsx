@@ -40,6 +40,22 @@ export const columns: ColumnDef<MarcaDAO>[] = [
   },
 
   {
+    accessorKey: "image",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          className="pl-0 dark:text-white"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Image
+          <ArrowUpDown className="w-4 h-4 ml-1" />
+        </Button>
+      );
+    },
+  },
+
+  {
     accessorKey: "href",
     header: ({ column }) => {
       return (

@@ -1,16 +1,24 @@
-import { butlerBlack, butlerBold, butlerLight, butlerMedium, butlerRegular, helveticaBlack, helveticaLight, helveticaMedium, helveticaRoman } from "@/lib/fonts";
+import { helveticaMedium } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import CategoryBox from "./category-box";
+import { getCategorysDAO } from "@/services/category-services";
 
-export default function Productos() {
+export default async function Productos() {
+
+  const categories= await getCategorysDAO()
   return (
-    <section className={cn("bg-black text-white pt-16")}>
-      <div className="flex flex-col md:flex-row">
+    <section className={cn("bg-black text-white pt-16 h-[600px] flex items-center justify-center pb-10")}>
+      <div className="flex flex-col md:flex-row items-center justify-center">
         <div className="flex-1 items-center flex flex-col justify-center">
           <div>
-            <h2 className={cn(helveticaMedium.className, "text-4xl mt-8 md:mt-0")}>PRODUCTOS</h2>
-            <CategoryBox categoria="aceite" />
+            <h2 className={cn(helveticaMedium.className, "text-4xl mt-8 text-center mb-10 md:mt-0")}>PRODUCTOS</h2>
+            <div className="flex gap-2">
+              {
+                categories.map((categoria) => (
+                  <CategoryBox key={categoria.id} categoria={categoria} />
+                ))
+              }
+            </div>
           </div>
         </div>
       </div>
