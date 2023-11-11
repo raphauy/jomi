@@ -12,7 +12,6 @@ export default function Home() {
       <Productos />
       <Marcas />
       <Footer />
-      <div className='mt-10'>Otra cosa</div>
     </div>
   )
 }

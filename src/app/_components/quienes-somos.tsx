@@ -5,9 +5,11 @@ import Image from "next/image";
 export default function QuienesSomos() {
   return (
     <section className={cn(helveticaLight.className, "")} id="quienes-somos">
-      <div className="flex flex-col md:flex-row">
-        <Image src="/botella_v2.png" alt="Quiénes somos" width={600} height={300} className="max-w-md md:max-w-lg xl:max-w-xl" />
-        <div className="flex-1 items-center flex flex-col justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="flex md:items-end h-full md:min-h-[400px]">
+          <Image src="/botella_v2.png" alt="Quiénes somos" width={600} height={300} className="max-w-md lg:max-w-xl" />
+        </div>
+        <div className="flex-1 items-center flex flex-col justify-center ">
           <div className="py-10">
             <h2 className={cn(helveticaMedium.className, "text-4xl mb-2")}>QUIÉNES SOMOS</h2>
 

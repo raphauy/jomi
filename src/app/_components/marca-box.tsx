@@ -11,7 +11,7 @@ type Props = {
 export default function MarcaBox({ marca }: Props) {
   return (
     <div className="w-full flex items-center justify-center">
-      <div className="relative h-32 w-32 flex items-center justify-center">      
+      <div className="relative h-40 w-40 flex items-center justify-center">      
         <Image
             src={`/logos/${marca.image}`}
             alt="Aceite"
