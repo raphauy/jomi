@@ -51,11 +51,11 @@ async function getCategoriesMenu() {
     const categoriesSubMenus= categories.map(({ id, name, description }) => ({
         key: name,
         description,
-        href: `/products/${id}`
+        href: `#productos`
     }))
     const productsMenu: MenuType= {
         key: 'productos',
-        href: '/admin/products',
+        href: `#productos`,
         subMenu: categoriesSubMenus,
     }
 
@@ -68,11 +68,11 @@ async function getBrandsMenu() {
     const subMenus= brands.map(({ name, description, href }) => ({
         key: name,
         description,
-        href: href || "#",
+        href: href || "#marcas",
     }))
     const productsMenu: MenuType= {
         key: 'marcas',
-        href: '/admin/marcas',
+        href: '#marcas',
         subMenu: subMenus,
     }
 

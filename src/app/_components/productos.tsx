@@ -7,7 +7,7 @@ export default async function Productos() {
 
   const categories= await getCategorysDAO()
   return (
-    <section className={cn("bg-black text-white pt-16 min-h-[600px] flex items-center justify-center pb-10")}>
+    <section id="productos" className={cn("bg-black text-white pt-16 min-h-[600px] flex items-center justify-center pb-10")}>
       <div className="flex flex-col md:flex-row items-center justify-center">
         <div className="flex-1 items-center flex flex-col justify-center">
           <div>

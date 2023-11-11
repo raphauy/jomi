@@ -9,7 +9,7 @@ export default async function Marcas() {
 
   const marcas= await getMarcasDAO()
   return (
-    <section className="bg-white py-8 flex flex-col items-center">
+    <section id="marcas" className="bg-white py-8 flex flex-col items-center">
       <h2 className={cn(helveticaMedium.className, "text-4xl mb-5")}>MARCAS</h2>
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 md:gap-4 max-w-4xl">
         {
