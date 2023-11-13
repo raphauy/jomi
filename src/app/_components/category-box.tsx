@@ -13,8 +13,7 @@ export default function CategoryBox({ categoria }: Props) {
     <Image
         src={`/${categoria.image}`}
         alt="Aceite"
-        layout="fill"
-        objectFit="cover"
+        fill
         className="z-0 rounded-3xl"
     />
 

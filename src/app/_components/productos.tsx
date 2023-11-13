@@ -11,8 +11,8 @@ export default async function Productos() {
       <div className="flex flex-col md:flex-row items-center justify-center">
         <div className="flex-1 items-center flex flex-col justify-center">
           <div>
-            <h2 className={cn(helveticaMedium.className, "text-4xl mt-8 text-center mb-10 md:mt-0")}>PRODUCTOS</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
+            <h2 className={cn(helveticaMedium.className, "text-3xl sm:text-4xl mt-8 text-center mb-10 md:mt-0")}>PRODUCTOS</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-2">
               {
                 categories.map((categoria) => (
                   <CategoryBox key={categoria.id} categoria={categoria} />

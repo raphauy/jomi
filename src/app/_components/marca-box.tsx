@@ -15,8 +15,7 @@ export default function MarcaBox({ marca }: Props) {
         <Image
             src={`/logos/${marca.image}`}
             alt="Aceite"
-            layout="fill" // Ajusta la imagen para que llene el contenedor
-            objectFit="cover" // Mantiene las proporciones de la imagen
+            fill
             className="border rounded-xl"
         />
       </div>

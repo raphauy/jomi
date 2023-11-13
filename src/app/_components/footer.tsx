@@ -20,7 +20,7 @@ export default function Footer() {
           </p>
           <p className="border-t my-1 w-32" />
           <Link href="mailto:administracion@jomirepresentaciones.com.uy" target="_blank" className="flex">
-            <Mail className="pr-1 -ml-0.5 h-4" /><p className="pt-0.5">administracion@jomirepresentaciones.com.uy</p>
+            <p className="pt-0.5 flex"><Mail className="pr-1 -ml-0.5 h-4 " />administracion@jomirepresentaciones.com.uy</p>
           </Link>
           <div className="flex">
             <Smartphone className="pr-1 -ml-0.5 h-4" />

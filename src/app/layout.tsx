@@ -39,7 +39,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           
 
             <ThemeProvider attribute="class" defaultTheme="light">
-              <div className="relative flex flex-col min-h-screen mt-1">
+              <div className="relative flex flex-col min-h-screen">
                 <Header><Menu /></Header>
                 <MobileSidebar />
 
