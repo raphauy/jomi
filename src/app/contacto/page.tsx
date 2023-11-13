@@ -1,7 +1,8 @@
 import React from 'react'
+import Footer from '../_components/footer'
 
-export default function Contacto() {
+export default function ContactoPage() {
   return (
-    <Contacto />
+    <Footer />
   )
 }

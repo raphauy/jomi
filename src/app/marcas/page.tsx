@@ -1,5 +1,6 @@
+import Marcas from "../_components/marcas";
 
-export default function Marcas() {
+export default function MarcasPage() {
   return (
     <Marcas />
   )
