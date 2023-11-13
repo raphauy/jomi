@@ -13,22 +13,22 @@ const routes = [
   {
     icon: Compass,
     label: "QUIÉNES SOMOS",
-    href: "#quienes-somos",
+    href: "/nosotros",
   },
   {
     icon: Compass,
     label: "PRODUCTOS",
-    href: "#productos",
+    href: "/productos",
   },
   {
     icon: Compass,
     label: "MARCAS",
-    href: "#marcas",
+    href: "/marcas",
   },
   {
     icon: Contact,
     label: "CONTACTO",
-    href: "#contacto",
+    href: "/contacto",
   },
 ];
 
