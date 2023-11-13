@@ -3,6 +3,8 @@ import Footer from '../_components/footer'
 
 export default function ContactoPage() {
   return (
-    <Footer />
+    <div className="w-full bg-black min-h-screen">
+        <Footer />
+    </div>
   )
 }
