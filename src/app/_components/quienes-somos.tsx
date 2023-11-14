@@ -14,8 +14,8 @@ export default function QuienesSomos() {
             <h2 className={cn(helveticaMedium.className, "text-3xl sm:text-4xl mb-2")}>QUIÉNES SOMOS</h2>
 
             <p className="max-w-[384px] leading-5">
-              Contamos con más de <span className="font-bold">30 años de experiencia </span>
-              comercializando insumos de alta calidad para <span className="font-bold">vinos, espumantes, viñedos, 
+              Somos una empresa familiar que cuenta con más de <span className="font-bold">30 años de experiencia </span>
+              comercializando insumos de alta calidad para <span className="font-bold">vinos, espumosos, viñedos, 
               cervezas, aceites, licores y más.</span> Nuestras marcas representadas trabajan 
               buscando la excelencia, con altos niveles de calidad, alta inversión en I+D y 
               abrazadas a procesos, prácticas y productos amigables con el medio ambiente.
