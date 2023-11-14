@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils'
 import getSession from '@/lib/auth'
 import { MobileSidebar } from '@/components/header/_mobile/mobile-sidebar'
 import { butlerBlack, butlerBold, butlerLight, butlerMedium, butlerRegular, helveticaBlack, helveticaBold, helveticaHeavy, helveticaMedium, helveticaRoman, helveticaThin } from '@/lib/fonts'
+import Footer from './_components/footer'
 
 
 export const metadata: Metadata = {
@@ -45,6 +46,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
 
                 <div className="flex flex-col items-center flex-1">
                   {children}
+                  <Footer />
                   <Toaster />
                 </div>
               </div>            

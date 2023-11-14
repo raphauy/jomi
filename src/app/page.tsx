@@ -11,7 +11,6 @@ export default function Home() {
       <QuienesSomos />
       <Productos />
       <Marcas />
-      <Footer />
     </div>
   )
 }
