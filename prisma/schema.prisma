@@ -68,8 +68,8 @@ model Category {
   name        String   @unique
   description String?
   image       String?
-  rubro       Rubro @relation(fields: [rubroId], references: [id])
-  rubroId     String @default("")
+  rubro       Rubro? @relation(fields: [rubroId], references: [id])
+  rubroId     String? 
   products    Product[]
 }
 
@@ -80,8 +80,8 @@ model Product {
   description String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  category    Category @relation(fields: [categoryId], references: [id])
-  categoryId  String
+  category    Category? @relation(fields: [categoryId], references: [id])
+  categoryId  String?
 }
 
 model Marca {
