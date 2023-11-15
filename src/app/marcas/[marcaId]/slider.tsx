@@ -1,20 +1,17 @@
 "use client"
 
-import { MotionConfig, motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { MarcaDAO } from "@/services/marca-services";
+import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { set } from "date-fns";
-import { cn } from "@/lib/utils";
 
 type Props = {
     marcas: MarcaDAO[]
 }
-
-//type MarcaDAOPlus = MarcaDAO & { index: number }
 
 export default function SliderComponent({ marcas }: Props) {
 
