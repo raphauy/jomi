@@ -21,7 +21,7 @@ export default async function MarcaPage({ params }: Props) {
     marcas.splice(index, 1)
 
     return (
-        <div className="flex flex-col gap-20 min-h-[500px] items-center">
+        <div className="flex flex-col gap-20 min-h-[500px] items-center my-20">
 
             <div className="w-full flex justify-center items-center mt-2 gap-2">
                 <div className="relative h-60 w-60 min-w-[240px]">      
