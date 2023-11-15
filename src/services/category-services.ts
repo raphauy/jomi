@@ -40,7 +40,33 @@ export async function getCategorysDAO() {
 
   return res as CategoryDAO[]
 }
-  
+
+export async function getCategoriesByRubroDAO(rubroId: string) {
+  const found = await prisma.category.findMany({
+    where: {
+      rubroId
+    },
+    orderBy: {
+      id: 'asc'
+    },
+    include: {
+      rubro: true
+    }
+  })
+  const res = found.map((category) => {
+    return {
+      id: category.id,
+      name: category.name,
+      description: category.description,
+      image: category.image,
+      rubroId: category.rubroId,
+      rubroName: category.rubro?.name || ""
+    }
+  })
+
+  return res as CategoryDAO[]
+}
+
 export async function getCategoryDAO(id: string) {
   const found = await prisma.category.findUnique({
     where: {

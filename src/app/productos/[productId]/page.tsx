@@ -11,7 +11,7 @@ export default async function ProductPage({ params }: Props) {
 
     return (
         <div>
-            <p>Product: {product.name}</p>
+            <p>Product: {product?.name}</p>
         </div>
     )
 }

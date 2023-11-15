@@ -1,9 +1,9 @@
-import Categorias from "../_components/categorias";
+import Rubros from "../_components/rubros";
 
 export default function ProductosPage() {
   return (
     <div className="w-full bg-black">
-        <Categorias />
+        <Rubros />
     </div>
     
   )

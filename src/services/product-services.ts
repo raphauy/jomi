@@ -35,10 +35,10 @@ export async function getProductsDAO() {
       createdAt: product.createdAt,
       updatedAt: product.updatedAt,
       categoryId: product.categoryId,
-      categoryName: product.category.name
+      categoryName: product.category?.name
     }
   })
-  return res
+  return res as ProductDAO[]
 }
   
 export async function getProductDAO(id: string) {
@@ -60,7 +60,7 @@ export async function getProductDAO(id: string) {
     createdAt: found.createdAt,
     updatedAt: found.updatedAt,
     categoryId: found.categoryId,
-    categoryName: found.category.name
+    categoryName: found.category?.name
   }
   return res as ProductDAO
 }

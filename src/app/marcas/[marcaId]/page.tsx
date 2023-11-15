@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 import { getMarcaDAO, getMarcasDAO } from "@/services/marca-services"
 import Image from "next/image"
 import Link from "next/link"
-import SliderComponent from "./slider"
+import SliderComponent from "./slider-marcas"
 
 type Props = {
     params: {

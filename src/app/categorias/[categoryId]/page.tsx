@@ -11,7 +11,7 @@ export default async function ProductPage({ params }: Props) {
 
     return (
         <div>
-            <p>Category: {category.name}</p>
+            <p>Category: {category?.name}</p>
         </div>
     )
 }
