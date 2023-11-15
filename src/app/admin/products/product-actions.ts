@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache"
 import { ProductDAO, ProductFormValues, createProduct, updateProduct, getProductDAO, deleteProduct } from "@/services/product-services"
+import { CategoryDAO, getCategorysDAO } from "@/services/category-services"
 
 export async function getProductDAOAction(id: string): Promise<ProductDAO | null> {
   return getProductDAO(id)
@@ -26,4 +27,8 @@ export async function deleteProductAction(id: string): Promise<ProductDAO | null
   revalidatePath("/")
 
   return deleted as ProductDAO
+}
+
+export async function getCategoriesDAOAction(): Promise<CategoryDAO[]> {
+  return getCategorysDAO()
 }

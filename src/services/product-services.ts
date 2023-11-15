@@ -8,6 +8,7 @@ export type ProductDAO = {
 	createdAt:  Date
 	updatedAt:  Date
 	categoryId:  string
+  categoryName: string
 }
 
 export const productFormSchema = z.object({
@@ -22,8 +23,22 @@ export async function getProductsDAO() {
     orderBy: {
       id: 'asc'
     },
+    include: {
+      category: true
+    }
   })
-  return found as ProductDAO[]
+  const res = found.map((product) => {
+    return {
+      id: product.id,
+      name: product.name,
+      description: product.description,
+      createdAt: product.createdAt,
+      updatedAt: product.updatedAt,
+      categoryId: product.categoryId,
+      categoryName: product.category.name
+    }
+  })
+  return res
 }
   
 export async function getProductDAO(id: string) {
@@ -31,8 +46,23 @@ export async function getProductDAO(id: string) {
     where: {
       id
     },
+    include: {
+      category: true
+    }
   })
-  return found as ProductDAO
+  if (!found) {
+    return null
+  }
+  const res = {
+    id: found.id,
+    name: found.name,
+    description: found.description,
+    createdAt: found.createdAt,
+    updatedAt: found.updatedAt,
+    categoryId: found.categoryId,
+    categoryName: found.category.name
+  }
+  return res as ProductDAO
 }
     
 export async function createProduct(data: ProductFormValues) {

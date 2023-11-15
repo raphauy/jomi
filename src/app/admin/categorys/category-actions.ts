@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache"
 import { CategoryDAO, CategoryFormValues, createCategory, updateCategory, getCategoryDAO, deleteCategory } from "@/services/category-services"
+import { RubroDAO, getRubrosDAO } from "@/services/rubro-services"
 
 export async function getCategoryDAOAction(id: string): Promise<CategoryDAO | null> {
   return getCategoryDAO(id)
@@ -26,4 +27,8 @@ export async function deleteCategoryAction(id: string): Promise<CategoryDAO | nu
   revalidatePath("/")
 
   return deleted as CategoryDAO
+}
+
+export async function getRubrosDAOAction(): Promise<RubroDAO[]> {
+  return getRubrosDAO()
 }

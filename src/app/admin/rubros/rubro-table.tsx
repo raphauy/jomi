@@ -29,28 +29,18 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { DataTableFacetedFilter } from "@/components/data-table/data-table-faceted-filter";
-import { RubroDAO } from "@/services/rubro-services";
 
 interface DataTableToolbarProps<TData> {
   table: TanstackTable<TData>;
-  rubros: string[];
 }
 
-export function DataTableToolbar<TData>({ table, rubros }: DataTableToolbarProps<TData>) {
-
+export function DataTableToolbar<TData>({
+  table,
+}: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
 
   return (
     <div className="flex gap-1 dark:text-white">
-      {table.getColumn("rubroName") && (
-          <DataTableFacetedFilter
-            column={table.getColumn("rubroName")}
-            title="Rubro"
-            options={rubros}
-          />
-      )}
-
       <Input
         className="max-w-xs"
         placeholder="name filter..."
@@ -60,6 +50,33 @@ export function DataTableToolbar<TData>({ table, rubros }: DataTableToolbarProps
         }
       />
 
+      <Input
+        className="max-w-xs"
+        placeholder="description filter..."
+        value={
+          (table.getColumn("description")?.getFilterValue() as string) ?? ""
+        }
+        onChange={(event) =>
+          table.getColumn("description")?.setFilterValue(event.target.value)
+        }
+      />
+
+      <Input
+        className="max-w-xs"
+        placeholder="image filter..."
+        value={(table.getColumn("image")?.getFilterValue() as string) ?? ""}
+        onChange={(event) =>
+          table.getColumn("image")?.setFilterValue(event.target.value)
+        }
+      />
+
+      {/* {table.getColumn("role") && roles && (
+          <DataTableFacetedFilter
+            column={table.getColumn("role")}
+            title="Rol"
+            options={roles}
+          />
+        )} */}
       {isFiltered && (
         <Button
           variant="ghost"
@@ -82,7 +99,6 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
   columnsOff?: string[];
   subject: string;
-  rubros: string[];
 }
 
 export function DataTable<TData, TValue>({
@@ -90,7 +106,6 @@ export function DataTable<TData, TValue>({
   data,
   columnsOff,
   subject,
-  rubros,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
@@ -131,7 +146,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="w-full space-y-4 dark:text-white">
-      <DataTableToolbar table={table} rubros={rubros} />
+      <DataTableToolbar table={table} />
       <div className="border rounded-md">
         <Table>
           <TableHeader>

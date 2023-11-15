@@ -1,12 +1,12 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { CategoryDAO } from "@/services/category-services";
+import { RubroDAO } from "@/services/rubro-services";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
-import { DeleteCategoryDialog, CategoryDialog } from "./category-dialogs";
+import { DeleteRubroDialog, RubroDialog } from "./rubro-dialogs";
 
-export const columns: ColumnDef<CategoryDAO>[] = [
+export const columns: ColumnDef<RubroDAO>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
@@ -54,24 +54,6 @@ export const columns: ColumnDef<CategoryDAO>[] = [
       );
     },
   },
-  {
-    accessorKey: "rubroName",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          className="pl-0 dark:text-white"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Rubro
-          <ArrowUpDown className="w-4 h-4 ml-1" />
-        </Button>
-      );
-    },
-    filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id))
-    },
-},
 
   // {
   //   accessorKey: "role",
@@ -93,12 +75,12 @@ export const columns: ColumnDef<CategoryDAO>[] = [
     cell: ({ row }) => {
       const data = row.original;
 
-      const description = `Do you want to delete Category ${data.name}?`;
+      const description = `Do you want to delete Rubro ${data.name}?`;
 
       return (
         <div className="flex items-center justify-end gap-2">
-          <CategoryDialog id={data.id} />
-          <DeleteCategoryDialog description={description} id={data.id} />
+          <RubroDialog id={data.id} />
+          <DeleteRubroDialog description={description} id={data.id} />
         </div>
       );
     },

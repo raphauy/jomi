@@ -5,15 +5,11 @@ import { useForm } from "react-hook-form";
 import { toast } from "@/components/ui/use-toast";
 import { useEffect, useState } from "react";
 import {
-  deleteProductAction,
-  createOrUpdateProductAction,
-  getProductDAOAction,
-  getCategoriesDAOAction,
-} from "./product-actions";
-import {
-  productFormSchema,
-  ProductFormValues,
-} from "@/services/product-services";
+  deleteRubroAction,
+  createOrUpdateRubroAction,
+  getRubroDAOAction,
+} from "./rubro-actions";
+import { rubroFormSchema, RubroFormValues } from "@/services/rubro-services";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -25,29 +21,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Loader } from "lucide-react";
-import { CategoryDAO } from "@/services/category-services";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 type Props = {
   id?: string;
   closeDialog: () => void;
 };
 
-export function ProductForm({ id, closeDialog }: Props) {
-  const form = useForm<ProductFormValues>({
-    resolver: zodResolver(productFormSchema),
+export function RubroForm({ id, closeDialog }: Props) {
+  const form = useForm<RubroFormValues>({
+    resolver: zodResolver(rubroFormSchema),
     defaultValues: {},
     mode: "onChange",
   });
   const [loading, setLoading] = useState(false);
-  const [categories, setCategories] = useState<CategoryDAO[]>([])
-  const [defaultValue, setDefaultValue] = useState("default")
 
-  const onSubmit = async (data: ProductFormValues) => {
+  const onSubmit = async (data: RubroFormValues) => {
     setLoading(true);
     try {
-      await createOrUpdateProductAction(id ? id : null, data);
-      toast({ title: id ? "Product updated" : "Product created" });
+      await createOrUpdateRubroAction(id ? id : null, data);
+      toast({ title: id ? "Rubro updated" : "Rubro created" });
       closeDialog();
     } catch (error: any) {
       toast({
@@ -61,26 +53,10 @@ export function ProductForm({ id, closeDialog }: Props) {
   };
 
   useEffect(() => {
-    getCategoriesDAOAction()
-    .then((data) => {
-      setCategories(data)
-      toast({ title: "Categories loaded" });
-    })
-    .catch((error) => {
-      toast({
-        title: "Error",
-        description: error.message,
-        variant: "destructive",
-      });
-    })
-  }, [])
-
-  useEffect(() => {
     if (id) {
-      getProductDAOAction(id).then((data) => {
+      getRubroDAOAction(id).then((data) => {
         if (data) {
           form.reset(data);
-          setDefaultValue(data.categoryName)
         }
         Object.keys(form.getValues()).forEach((key: any) => {
           if (form.getValues(key) === null) {
@@ -95,37 +71,6 @@ export function ProductForm({ id, closeDialog }: Props) {
     <div className="p-4 bg-white rounded-md">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-
-          <FormField
-            control={form.control}
-            name="categoryId"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Categoría</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={defaultValue}>
-                  <FormControl>
-                    <SelectTrigger>
-                      {
-                        id ? 
-                        <SelectValue className="text-muted-foreground">{categories.find(category => category.id === field.value)?.name}</SelectValue> :
-                        <SelectValue className="text-muted-foreground" placeholder="Selecciona una Categoría" />
-                      }
-                      
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {categories.map(category => (
-                      <SelectItem key={category.id} value={category.id}>{category.name}</SelectItem>
-                    ))
-                    }
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-
           <FormField
             control={form.control}
             name="name"
@@ -133,7 +78,7 @@ export function ProductForm({ id, closeDialog }: Props) {
               <FormItem>
                 <FormLabel>Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="Product's name" {...field} />
+                  <Input placeholder="Rubro's name" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -147,7 +92,21 @@ export function ProductForm({ id, closeDialog }: Props) {
               <FormItem>
                 <FormLabel>Description</FormLabel>
                 <FormControl>
-                  <Input placeholder="Product's description" {...field} />
+                  <Input placeholder="Rubro's description" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="image"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Image</FormLabel>
+                <FormControl>
+                  <Input placeholder="Rubro's image" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -177,15 +136,15 @@ export function ProductForm({ id, closeDialog }: Props) {
   );
 }
 
-export function DeleteProductForm({ id, closeDialog }: Props) {
+export function DeleteRubroForm({ id, closeDialog }: Props) {
   const [loading, setLoading] = useState(false);
 
   async function handleDelete() {
     if (!id) return;
     setLoading(true);
-    deleteProductAction(id)
+    deleteRubroAction(id)
       .then(() => {
-        toast({ title: "Product deleted" });
+        toast({ title: "Rubro deleted" });
       })
       .catch((error) => {
         toast({

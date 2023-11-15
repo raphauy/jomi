@@ -8,6 +8,7 @@ import {
   deleteCategoryAction,
   createOrUpdateCategoryAction,
   getCategoryDAOAction,
+  getRubrosDAOAction,
 } from "./category-actions";
 import {
   categoryFormSchema,
@@ -24,6 +25,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Loader } from "lucide-react";
+import { RubroDAO } from "@/services/rubro-services";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 type Props = {
   id?: string;
@@ -37,6 +40,8 @@ export function CategoryForm({ id, closeDialog }: Props) {
     mode: "onChange",
   });
   const [loading, setLoading] = useState(false);
+  const [rubros, setRubros] = useState<RubroDAO[]>([])
+  const [defaultValue, setDefaultValue] = useState("default")
 
   const onSubmit = async (data: CategoryFormValues) => {
     setLoading(true);
@@ -56,14 +61,31 @@ export function CategoryForm({ id, closeDialog }: Props) {
   };
 
   useEffect(() => {
+    getRubrosDAOAction()
+    .then((data) => {
+      setRubros(data)
+      toast({ title: "Rubros loaded" });
+    })
+    .catch((error) => {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive",
+      });
+    })
+  }, [])
+  
+
+  useEffect(() => {
     if (id) {
       getCategoryDAOAction(id).then((data) => {
         if (data) {
-          form.reset(data);
+          setDefaultValue(data.rubroName)
+          form.reset(data)
         }
         Object.keys(form.getValues()).forEach((key: any) => {
           if (form.getValues(key) === null) {
-            form.setValue(key, "");
+            form.setValue(key, "")
           }
         });
       });
@@ -72,8 +94,39 @@ export function CategoryForm({ id, closeDialog }: Props) {
 
   return (
     <div className="p-4 bg-white rounded-md">
+
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+
+        <FormField
+        control={form.control}
+        name="rubroId"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Rubro</FormLabel>
+            <Select onValueChange={field.onChange} defaultValue={defaultValue}>
+              <FormControl>
+                <SelectTrigger>
+                  {
+                    id ? 
+                    <SelectValue className="text-muted-foreground">{rubros.find(rubro => rubro.id === field.value)?.name}</SelectValue> :
+                    <SelectValue className="text-muted-foreground" placeholder="Selecciona un Rubro"/>
+                  }
+                  
+                </SelectTrigger>
+              </FormControl>
+              <SelectContent>
+                {rubros.map(rubro => (
+                  <SelectItem key={rubro.id} value={rubro.id}>{rubro.name}</SelectItem>
+                ))
+                }
+              </SelectContent>
+            </Select>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
           <FormField
             control={form.control}
             name="name"

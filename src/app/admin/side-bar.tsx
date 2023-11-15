@@ -18,20 +18,25 @@ const data= [
   {
     href: "/admin/users",
     icon: User,
-    text: "Users"
+    text: "Usuarios"
   },
   {
     href: "divider", icon: User
   },  
   {
-    href: "/admin/products",
-    icon: ShoppingCart,
-    text: "Products"
+    href: "/admin/rubros",
+    icon: Shapes,
+    text: "Rubros"
   },
   {
     href: "/admin/categorys",
     icon: Shapes,
-    text: "Categories"
+    text: "Categorías"
+  },
+  {
+    href: "/admin/products",
+    icon: ShoppingCart,
+    text: "Productos"
   },
   {
     href: "divider", icon: User

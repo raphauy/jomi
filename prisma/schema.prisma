@@ -54,13 +54,23 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-
-model Category {
+model Rubro {
   id    String   @id @default(cuid())
   name  String   @unique
   description String?
   image String?
-  products Product[]
+  categorias Category[]
+}
+
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  image       String?
+  rubro       Rubro @relation(fields: [rubroId], references: [id])
+  rubroId     String @default("")
+  products    Product[]
 }
 
 
