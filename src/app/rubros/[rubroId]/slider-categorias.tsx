@@ -95,7 +95,7 @@ export default function SliderCategorias({ categorias }: Props) {
                                     className={cn("flex relative h-80 w-40 items-center justify-center")}
                                 >
                                     <Image
-                                        src={`/categorias/${categoria.name.toLowerCase()}/${categoria.image}`}
+                                        src={`/categorias/${categoria.rubroName.toLowerCase()}/${categoria.image}`}
                                         alt={categoria.name}
                                         width={320}
                                         height={320}
