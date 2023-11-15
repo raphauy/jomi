@@ -11,39 +11,25 @@ import { useEffect, useState } from "react";
 
 type Props = {
     categorias: CategoryDAO[]
+    maxItems: number
 }
 
-export default function SliderCategorias({ categorias }: Props) {
+export default function SliderCategorias({ categorias, maxItems }: Props) {
 
     const [current, setCurrent] = useState(0)
     const [currentCategorias, setCurrentCategorias] = useState<CategoryDAO[]>([])
 
-    // const [max, setMax] = useState(window.innerWidth <= 800 ? 2 : 3);
-
-    const max= 3
-    // useEffect(() => {
-    //     const handleResize = () => {
-    //         setMax(window.innerWidth <= 800 ? 2 : 3);
-    //     };
-
-    //     window.addEventListener('resize', handleResize);
-
-    //     return () => {
-    //         window.removeEventListener('resize', handleResize);
-    //     };
-    // }, []);
-
     useEffect(() => {
-        setCurrentCategorias(categorias.slice(current, current + max))
+        setCurrentCategorias(categorias.slice(current, current + maxItems))
     }
-    , [current, categorias, max])
+    , [current, categorias, maxItems])
 
     function onPreviousClick() {
         
         if ( current > 0 ) {
             const newCurrent= current - 1
             setCurrent(newCurrent)
-            setCurrentCategorias(categorias.slice(newCurrent, newCurrent + max))
+            setCurrentCategorias(categorias.slice(newCurrent, newCurrent + maxItems))
         }
             
     }
@@ -52,7 +38,7 @@ export default function SliderCategorias({ categorias }: Props) {
         if ( current < categorias.length - 1) {
             const newCurrent= current + 1
             setCurrent(newCurrent)
-            setCurrentCategorias(categorias.slice(newCurrent, newCurrent + max))
+            setCurrentCategorias(categorias.slice(newCurrent, newCurrent + maxItems))
         }
 
     }
@@ -74,7 +60,7 @@ export default function SliderCategorias({ categorias }: Props) {
     };
     
     return (
-        <section className="flex items-center justify-center mb-1  w-full">
+        <section className={cn("hidden items-center justify-center mb-1 w-full", maxItems === 3 && "sm:flex", maxItems === 2 && "flex sm:hidden")}>
             <div className="w-full flex items-center justify-center gap-1 z-20 bg-jomi-gris">
                 <Button size="sm" onClick={onPreviousClick} 
                     disabled={current === 0} 
@@ -92,22 +78,23 @@ export default function SliderCategorias({ categorias }: Props) {
                         currentCategorias.map((categoria, index) => (
                             <motion.div key={categoria.id} variants={itemVariants}>
                                 <div key={categoria.id}
-                                    className={cn("flex relative h-80 w-40 items-center justify-center")}
+                                    className={cn("flex flex-col text-black relative h-80 w-40 items-center justify-center")}
                                 >
                                     <Image
                                         src={`/categorias/${categoria.rubroName.toLowerCase()}/${categoria.image}`}
                                         alt={categoria.name}
                                         width={320}
                                         height={320}
-                                        className="border bg-white h-60 rounded-xl object-cover"
+                                        className="border bg-white h-60 rounded-2xl object-cover"
                                     />
+                                    <p className="h-10 mt-2 text-sm">{categoria.name.toUpperCase()}</p>
                                 </div>
                             </motion.div>
                     ))
                     }
                 </motion.div>
                 <Button size="sm" onClick={onNextClick} 
-                    disabled={current === categorias.length - max} 
+                    disabled={current === categorias.length - maxItems} 
                     variant="ghost" className="text-gray-500">
                     <ChevronRight className="" />
                 </Button>

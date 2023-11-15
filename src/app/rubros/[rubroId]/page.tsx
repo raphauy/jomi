@@ -25,11 +25,12 @@ export default async function RubroPage({ params }: Props) {
             <div className="z-0 py-20">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl">
                     INSUMOS <br/> 
-                    PARA <span className={cn(butlerRegular.className)}>{rubro.name.toUpperCase()}</span>
+                    PARA <span className={cn(butlerRegular.className, "underline")}>{rubro.name.toUpperCase()}</span>
                 </h1>
             </div>
 
-            <SliderCategorias categorias={categorias} />
+            <SliderCategorias categorias={categorias} maxItems={3} />
+            <SliderCategorias categorias={categorias} maxItems={2} />
         
       </section>
     )
