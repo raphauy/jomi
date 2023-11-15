@@ -1,7 +1,7 @@
 import Footer from './_components/footer'
 import HeroSection from './_components/hero'
 import Marcas from './_components/marcas'
-import Productos from './_components/productos'
+import Categorias from './_components/categorias'
 import QuienesSomos from './_components/quienes-somos'
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
     <div className='w-full'>
       <HeroSection />
       <QuienesSomos />
-      <Productos />
+      <Categorias />
       <Marcas />
     </div>
   )

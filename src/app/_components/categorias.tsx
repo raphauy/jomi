@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import CategoryBox from "./category-box";
 import { getCategorysDAO } from "@/services/category-services";
 
-export default async function Productos() {
+export default async function Categorias() {
 
   const categories= await getCategorysDAO()
   return (

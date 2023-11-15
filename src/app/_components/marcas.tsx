@@ -1,8 +1,6 @@
 import { helveticaMedium } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
-import CategoryBox from "./category-box";
-import { getCategorysDAO } from "@/services/category-services";
-import { getMarcaDAO, getMarcasDAO } from "@/services/marca-services";
+import { getMarcasDAO } from "@/services/marca-services";
 import MarcaBox from "./marca-box";
 
 export default async function Marcas() {
