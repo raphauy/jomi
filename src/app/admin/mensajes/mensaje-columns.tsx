@@ -75,7 +75,7 @@ export const columns: ColumnDef<MensajeDAO>[] = [
     cell: ({ row }) => {
       const data = row.original;
 
-      const description = `Do you want to delete Mensaje ${data.name}?`;
+      const description = `Do you want to delete Mensaje ${data.nombre}?`;
 
       return (
         <div className="flex items-center justify-end gap-2">
