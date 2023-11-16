@@ -2,7 +2,7 @@
 
 import Logged from "@/components/header/logged";
 import { cn } from "@/lib/utils";
-import { BookA, Copyright, LayoutDashboard, MessageCircle, Newspaper, Settings, Shapes, ShoppingCart, Tag, User } from "lucide-react";
+import { BookA, Copyright, LayoutDashboard, MailOpen, MessageCircle, Newspaper, Settings, Shapes, ShoppingCart, Tag, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -45,6 +45,14 @@ const data= [
     href: "/admin/marcas",
     icon: Copyright,
     text: "Marcas"
+  },
+  {
+    href: "divider", icon: User
+  },  
+  {
+    href: "/admin/mensajes",
+    icon: MailOpen,
+    text: "Mensajes"
   },
 ]
 

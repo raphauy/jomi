@@ -5,15 +5,16 @@ import { getMarcasDAO } from "@/services/marca-services";
 import MenuAdmin from "./menu-admin";
 import { MenuType, publicMenu } from "./menu-data";
 import MenuComponent from "./menu-item";
+import { getRubrosDAO } from "@/services/rubro-services";
 
 export default async function Menu() {
     
     const user= await getCurrentUser()
 
-    const categoriesMenu= await getCategoriesMenu()
+    const rubrosMenu= await getRubrosMenu()
     const productsMenuIndex= publicMenu.findIndex(menu => menu.key === 'productos')
     if (productsMenuIndex === -1) {
-        publicMenu.splice(2, 0, categoriesMenu)
+        publicMenu.splice(2, 0, rubrosMenu)
     }
 
     const brandsMenu= await getBrandsMenu()
@@ -45,18 +46,18 @@ export default async function Menu() {
     
 }
 
-async function getCategoriesMenu() {
+async function getRubrosMenu() {
     
-    const categories= await getCategorysDAO()
-    const categoriesSubMenus= categories.map(({ id, name, description }) => ({
+    const rubros= await getRubrosDAO()
+    const rubrosSubMenus= rubros.map(({ id, name, description }) => ({
         key: name,
         description,
-        href: `#productos`
+        href: `/rubros/${id}`
     }))
     const productsMenu: MenuType= {
         key: 'productos',
         href: `#productos`,
-        subMenu: categoriesSubMenus,
+        subMenu: rubrosSubMenus,
     }
 
     return productsMenu
@@ -65,10 +66,10 @@ async function getCategoriesMenu() {
 async function getBrandsMenu() {
         
     const brands= await getMarcasDAO()
-    const subMenus= brands.map(({ name, description, href }) => ({
+    const subMenus= brands.map(({ id, name, description }) => ({
         key: name,
         description,
-        href: href || "#marcas",
+        href: `/marcas/${id}`
     }))
     const productsMenu: MenuType= {
         key: 'marcas',

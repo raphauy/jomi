@@ -11,40 +11,25 @@ import { useEffect, useState } from "react";
 
 type Props = {
     marcas: MarcaDAO[]
+    maxItems: number
 }
 
-export default function SliderComponent({ marcas }: Props) {
+export default function SliderComponent({ marcas, maxItems }: Props) {
 
     const [current, setCurrent] = useState(0)
     const [currentMarcas, setCurrentMarcas] = useState<MarcaDAO[]>([])
 
-    const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
-    const [max, setMax] = useState(window.innerWidth <= 800 ? 2 : 4);
-
     useEffect(() => {
-        const handleResize = () => {
-            setViewportWidth(window.innerWidth);
-            setMax(window.innerWidth <= 800 ? 2 : 4);
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-    useEffect(() => {
-        setCurrentMarcas(marcas.slice(current, current + max))
+        setCurrentMarcas(marcas.slice(current, current + maxItems))
     }
-    , [current, marcas, max])
+    , [current, marcas, maxItems])
 
     function onPreviousClick() {
         
         if ( current > 0 ) {
             const newCurrent= current - 1
             setCurrent(newCurrent)
-            setCurrentMarcas(marcas.slice(newCurrent, newCurrent + max))
+            setCurrentMarcas(marcas.slice(newCurrent, newCurrent + maxItems))
         }
             
     }
@@ -53,7 +38,7 @@ export default function SliderComponent({ marcas }: Props) {
         if ( current < marcas.length - 1) {
             const newCurrent= current + 1
             setCurrent(newCurrent)
-            setCurrentMarcas(marcas.slice(newCurrent, newCurrent + max))
+            setCurrentMarcas(marcas.slice(newCurrent, newCurrent + maxItems))
         }
 
     }
@@ -75,7 +60,7 @@ export default function SliderComponent({ marcas }: Props) {
     };
     
     return (
-        <section className="flex flex-col items-center justify-center mb-1">
+        <section className={cn("hidden flex-col items-center justify-center mb-1", maxItems === 4 && "md:flex", maxItems === 2 && "flex md:hidden")}>
             <div className="w-full flex items-center gap-1">
                 <Button size="sm" onClick={onPreviousClick} disabled={current === 0}>
                     <ChevronLeft className="" />
@@ -105,7 +90,7 @@ export default function SliderComponent({ marcas }: Props) {
                     ))
                     }
                 </motion.div>
-                <Button size="sm" onClick={onNextClick} disabled={current === marcas.length - max}>
+                <Button size="sm" onClick={onNextClick} disabled={current === marcas.length - maxItems}>
                     <ChevronRight className="" />
                 </Button>
             </div>
