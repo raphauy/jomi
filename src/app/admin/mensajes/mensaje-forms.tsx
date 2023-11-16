@@ -134,11 +134,11 @@ export function MensajeForm({ id, closeDialog }: Props) {
           />
 
           <div className="flex justify-center">
-            <Button type="submit" className="px-7 mt-4 w-40">
+            <Button type="submit" className="px-7 mt-4 w-40 pt-2 font-bold">
               {loading ? (
                 <Loader className="h-4 w-4 animate-spin" />
               ) : (
-                <p className="whitespace-nowrap">Enviar consulta</p>
+                <p className="whitespace-nowrap">Enviar mensaje</p>
               )}
             </Button>
           </div>
