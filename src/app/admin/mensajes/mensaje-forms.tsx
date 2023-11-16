@@ -83,7 +83,7 @@ export function MensajeForm({ id, closeDialog }: Props) {
     <div className={cn("p-4")}>
       <div className={cn(butlerBlack.className, "border gap-8 flex flex-col items-center border-gray-500 p-10 h-40 rounded-lg", !enviado && "hidden")}>
         <p className="flex items-center gap-4 text-2xl">Mensaje enviado <CheckCircle2 color="green" /></p>
-        <p className={helveticaMedium.className}>Muchas gracias por el contacto!</p>
+        <p className={helveticaMedium.className}>¡Muchas gracias por el contacto!</p>
       </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className={cn("space-y-4 md:min-w-[500px]", enviado && "hidden")}>

@@ -46,7 +46,6 @@ export default async function RootLayout({ children }: RootLayoutProps) {
 
                 <div className="flex flex-col items-center flex-1">
                   <div className='flex-1 w-full'>{children}</div>
-                  <Footer />
                   <Toaster />
                 </div>
               </div>            

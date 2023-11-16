@@ -1,6 +1,7 @@
 import { helveticaLight } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { MensajeForm } from "../admin/mensajes/mensaje-forms";
+import Footer from "../_components/footer";
 
 export default function ContactoPage() {
   return (
@@ -14,6 +15,7 @@ export default function ContactoPage() {
       <div className="bg-jomi-gris w-full flex z-0 flex-col items-center gap-20 text-black text-left py-10">
         <MensajeForm />
       </div>
+      <Footer />
 
     </section>
   )

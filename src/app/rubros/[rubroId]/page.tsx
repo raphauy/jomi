@@ -4,6 +4,7 @@ import { getRubroDAO, getRubrosDAO } from "@/services/rubro-services"
 import SliderRubros from "./slider-rubros"
 import SliderCategorias from "./slider-categorias"
 import { getCategoriesByRubroDAO, getCategorysDAO } from "@/services/category-services"
+import Footer from "@/app/_components/footer"
 
 type Props = {
     params: {
@@ -31,7 +32,8 @@ export default async function RubroPage({ params }: Props) {
 
             <SliderCategorias categorias={categorias} maxItems={3} />
             <SliderCategorias categorias={categorias} maxItems={2} />
-        
+            <Footer />
+
       </section>
     )
 }

@@ -5,6 +5,7 @@ import { getMarcaDAO, getMarcasDAO } from "@/services/marca-services"
 import Image from "next/image"
 import Link from "next/link"
 import SliderComponent from "./slider-marcas"
+import Footer from "@/app/_components/footer"
 
 type Props = {
     params: {
@@ -45,6 +46,7 @@ export default async function MarcaPage({ params }: Props) {
                 </div>
                 <SliderComponent marcas={marcas} maxItems={4}/>
                 <SliderComponent marcas={marcas} maxItems={2}/>
+                <Footer />
             </div>            
         </section>
 

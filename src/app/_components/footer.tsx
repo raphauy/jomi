@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <section id="contacto" className="bg-black text-white flex flex-col items-center p-2 w-full">
+    <section id="contacto" className="bg-black text-white flex flex-col items-center p-2 w-full text-left">
       <div className="grid grid-cols-1 md:grid-cols-2 xl:w-[1000px]">
         <div className="py-5 flex flex-col text-sm">
           <p className="mb-3">CONTACTO</p>
