@@ -29,7 +29,7 @@ export default async function MarcaPage({ params }: Props) {
                 <h1 className="text-3xl sm:text-4xl md:text-5xl">MARCAS REPRESENTADAS</h1>
             </div>
 
-            <div className="bg-jomi-gris w-full flex z-0 flex-col items-center gap-20 text-black text-left py-10">
+            <div className="bg-jomi-gris w-full flex z-0 flex-col items-center gap-20 text-black text-left pt-10">
                 <div className="w-full flex justify-center items-center mt-2 gap-8">
                     <div className="relative h-60 w-60 min-w-[240px]">      
                         <Image src={`/logos/${marca.image}`} alt="Aceite" fill className="border rounded-xl border-gray-300 bg-white" />

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { helveticaMedium } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { Facebook, Instagram, Linkedin, Mail, Smartphone } from "lucide-react";
 import Image from "next/image";
@@ -6,7 +7,8 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <section id="contacto" className="bg-black text-white flex flex-col items-center p-2 w-full text-left">
+    <section id="contacto" className={cn("bg-black text-white flex flex-col items-center p-2 w-full text-left z-0", helveticaMedium.className)}>
+      
       <div className="grid grid-cols-1 md:grid-cols-2 xl:w-[1000px]">
         <div className="py-5 flex flex-col text-sm">
           <p className="mb-3">CONTACTO</p>
