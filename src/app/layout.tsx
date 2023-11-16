@@ -35,7 +35,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     <>
       <html lang="es" suppressHydrationWarning>
         <head />
-        <body className={cn("min-h-screen bg-jomi-gris text-black antialiased", helveticaMedium.className)}>
+        <body className={cn("min-h-screen bg-black text-black antialiased", helveticaMedium.className)}>
             <SessionProvider session={session}>
           
 

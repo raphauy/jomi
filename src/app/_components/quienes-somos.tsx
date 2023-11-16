@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function QuienesSomos() {
   return (
-    <section className={cn(helveticaLight.className, "")} id="quienes-somos">
+    <section className={cn(helveticaLight.className, "bg-jomi-gris")} id="quienes-somos">
       <div className="grid grid-cols-1 md:grid-cols-2">
         <div className="relative flex">
           <Image src="/botella_v2.png" alt="Quiénes somos" width={600} height={300} className="object-fill" />
