@@ -16,9 +16,9 @@ export default function QuienesSomos() {
             <p className="max-w-[384px] leading-5">
               Somos una empresa familiar que cuenta con más de <span className="font-bold">30 años de experiencia </span>
               comercializando insumos de alta calidad para <span className="font-bold">vinos, espumosos, viñedos, 
-              cervezas, aceites, licores y más.</span> Nuestras marcas representadas trabajan 
-              buscando la excelencia, con altos niveles de calidad, alta inversión en I+D y 
-              abrazadas a procesos, prácticas y productos amigables con el medio ambiente.
+              cervezas, aceites, licores y más.</span> Nuestras marcas representadas están comprometidas con la excelencia, 
+              con altos niveles de calidad, alta inversión en I+D y abrazadas a procesos, prácticas y productos amigables 
+              con el medio ambiente.
             </p>
           </div>
         </div>
