@@ -9,10 +9,6 @@ import {
   createOrUpdateMensajeAction,
   getMensajeDAOAction,
 } from "./mensaje-actions";
-import {
-  mensajeFormSchema,
-  MensajeFormValues,
-} from "@/services/mensaje-services";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -23,11 +19,22 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Loader } from "lucide-react";
+import { CheckCircle2, Loader } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
+import { butlerBlack, helveticaMedium } from "@/lib/fonts";
+import { z } from "zod";
+
+export const mensajeFormSchema = z.object({
+	nombre: z.string().optional(),
+	email: z.string({required_error: "El email es obligatorio."}).email({message: "El email no es válido."}),
+	contenido: z.string({required_error: "El Contenido es obligatorio."}),
+})
+export type MensajeFormValues = z.infer<typeof mensajeFormSchema>
 
 type Props = {
   id?: string;
-  closeDialog: () => void;
+  closeDialog?: () => void;
 };
 
 export function MensajeForm({ id, closeDialog }: Props) {
@@ -37,13 +44,15 @@ export function MensajeForm({ id, closeDialog }: Props) {
     mode: "onChange",
   });
   const [loading, setLoading] = useState(false);
+  const [enviado, setEnviado] = useState(false)
 
   const onSubmit = async (data: MensajeFormValues) => {
     setLoading(true);
     try {
       await createOrUpdateMensajeAction(id ? id : null, data);
-      toast({ title: id ? "Mensaje updated" : "Mensaje created" });
-      closeDialog();
+      toast({ title: id ? "Mensaje actualizado" : "Mensaje enviado" });
+      closeDialog && closeDialog();
+      setEnviado(true)
     } catch (error: any) {
       toast({
         title: "Error",
@@ -71,16 +80,20 @@ export function MensajeForm({ id, closeDialog }: Props) {
   }, [form, id]);
 
   return (
-    <div className="p-4 bg-white rounded-md">
+    <div className={cn("p-4")}>
+      <div className={cn(butlerBlack.className, "border gap-8 flex flex-col items-center border-gray-500 p-10 h-40 rounded-lg", !enviado && "hidden")}>
+        <p className="flex items-center gap-4 text-2xl">Mensaje enviado <CheckCircle2 color="green" /></p>
+        <p className={helveticaMedium.className}>Muchas gracias por el contacto!</p>
+      </div>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className={cn("space-y-4 md:min-w-[500px]", enviado && "hidden")}>
 
-          <div className="flex gap-2">
-            <FormField
+          <div className="flex gap-2 w-full">
+            <FormField            
               control={form.control}
               name="nombre"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="w-full">
                   <FormLabel>Nombre</FormLabel>
                   <FormControl>
                     <Input placeholder="👤" {...field} />
@@ -94,7 +107,7 @@ export function MensajeForm({ id, closeDialog }: Props) {
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="w-full">
                   <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input placeholder="✉️" {...field} />
@@ -111,29 +124,21 @@ export function MensajeForm({ id, closeDialog }: Props) {
             name="contenido"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Contenido</FormLabel>
+                <FormLabel>Mensaje</FormLabel>
                 <FormControl>
-                  <Input placeholder="Mensaje's contenido" {...field} />
+                  <Textarea placeholder="Escribe tu mensaje aquí" {...field} rows={5} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
 
-          <div className="flex justify-end">
-            <Button
-              onClick={() => closeDialog()}
-              type="button"
-              variant={"secondary"}
-              className="w-32"
-            >
-              Cancel
-            </Button>
-            <Button type="submit" className="w-32 ml-2">
+          <div className="flex justify-center">
+            <Button type="submit" className="px-7 mt-4 w-40">
               {loading ? (
                 <Loader className="h-4 w-4 animate-spin" />
               ) : (
-                <p>Save</p>
+                <p className="whitespace-nowrap">Enviar consulta</p>
               )}
             </Button>
           </div>

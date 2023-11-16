@@ -24,7 +24,7 @@ import { Loader } from "lucide-react";
 
 type Props = {
   id?: string;
-  closeDialog: () => void;
+  closeDialog?: () => void;
 };
 
 export function UserForm({ id, closeDialog }: Props) {
@@ -40,7 +40,7 @@ export function UserForm({ id, closeDialog }: Props) {
     try {
       await createOrUpdateUserAction(id ? id : null, data);
       toast({ title: id ? "User updated" : "User created" });
-      closeDialog();
+      closeDialog && closeDialog();
     } catch (error: any) {
       toast({
         title: "Error",
@@ -124,7 +124,7 @@ export function UserForm({ id, closeDialog }: Props) {
 
           <div className="flex justify-end">
             <Button
-              onClick={() => closeDialog()}
+              onClick={() => closeDialog && closeDialog()}
               type="button"
               variant={"secondary"}
               className="w-32"

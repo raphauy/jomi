@@ -41,6 +41,6 @@ export const publicMenu: MenuType[]= [
         // },
         {
             key: 'contacto',
-            href: '#contacto',
+            href: '/contacto',
         },
         ]

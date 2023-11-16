@@ -15,7 +15,7 @@ export async function createOrUpdateMarcaAction(id: string | null, data: MarcaFo
       updated= await createMarca(data)
   }     
 
-  revalidatePath("/")
+  revalidatePath("/admin/marcas")
 
   return updated as MarcaDAO
 }
@@ -23,7 +23,7 @@ export async function createOrUpdateMarcaAction(id: string | null, data: MarcaFo
 export async function deleteMarcaAction(id: string): Promise<MarcaDAO | null> {    
   const deleted= await deleteMarca(id)
 
-  revalidatePath("/")
+  revalidatePath("/admin/marcas")
 
   return deleted as MarcaDAO
 }

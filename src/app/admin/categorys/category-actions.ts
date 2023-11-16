@@ -16,7 +16,7 @@ export async function createOrUpdateCategoryAction(id: string | null, data: Cate
       updated= await createCategory(data)
   }     
 
-  revalidatePath("/")
+  revalidatePath("/admin/categorys")
 
   return updated as CategoryDAO
 }
@@ -24,7 +24,7 @@ export async function createOrUpdateCategoryAction(id: string | null, data: Cate
 export async function deleteCategoryAction(id: string): Promise<CategoryDAO | null> {    
   const deleted= await deleteCategory(id)
 
-  revalidatePath("/")
+  revalidatePath("/admin/categorys")
 
   return deleted as CategoryDAO
 }

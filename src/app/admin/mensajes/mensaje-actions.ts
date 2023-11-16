@@ -1,7 +1,9 @@
 "use server"
 
+import { MensajeDAO, createMensaje, deleteMensaje, getMensajeDAO, updateMensaje } from "@/services/mensaje-services"
 import { revalidatePath } from "next/cache"
-import { MensajeDAO, MensajeFormValues, createMensaje, updateMensaje, getMensajeDAO, deleteMensaje } from "@/services/mensaje-services"
+import { MensajeFormValues } from "./mensaje-forms"
+
 
 export async function getMensajeDAOAction(id: string): Promise<MensajeDAO | null> {
   return getMensajeDAO(id)

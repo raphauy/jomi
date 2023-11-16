@@ -15,7 +15,7 @@ export async function createOrUpdateRubroAction(id: string | null, data: RubroFo
       updated= await createRubro(data)
   }     
 
-  revalidatePath("/")
+  revalidatePath("/admin/rubros")
 
   return updated as RubroDAO
 }
@@ -23,7 +23,7 @@ export async function createOrUpdateRubroAction(id: string | null, data: RubroFo
 export async function deleteRubroAction(id: string): Promise<RubroDAO | null> {    
   const deleted= await deleteRubro(id)
 
-  revalidatePath("/")
+  revalidatePath("/admin/rubros")
 
   return deleted as RubroDAO
 }
