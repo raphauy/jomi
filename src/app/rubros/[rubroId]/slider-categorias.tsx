@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button";
+import { helveticaRoman } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { CategoryDAO } from "@/services/category-services";
 import { motion } from "framer-motion";
@@ -61,7 +62,7 @@ export default function SliderCategorias({ categorias, maxItems }: Props) {
     
     return (
         <section className={cn("hidden items-center justify-center mb-1 w-full", maxItems === 3 && "sm:flex", maxItems === 2 && "flex sm:hidden")}>
-            <div className="w-full flex items-center justify-center gap-1 z-20 bg-jomi-gris">
+            <div className="w-full flex items-center justify-center h-[600px] gap-1 z-20 bg-jomi-gris">
                 <Button size="sm" onClick={onPreviousClick} 
                     disabled={current === 0} 
                     variant="ghost" className="text-gray-500">                    
@@ -73,12 +74,12 @@ export default function SliderCategorias({ categorias, maxItems }: Props) {
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    className="flex gap-4 px-4 border p-2  rounded-lg ">
+                    className="flex gap-4 px-4 border p-2 rounded-lg ">
                     {
                         currentCategorias.map((categoria, index) => (
                             <motion.div key={categoria.id} variants={itemVariants}>
                                 <div key={categoria.id}
-                                    className={cn("flex flex-col text-black relative h-80 w-40 items-center justify-center")}
+                                    className={cn(helveticaRoman.className, "flex flex-col text-black relative h-80 w-40 items-center justify-center")}
                                 >
                                     <Image
                                         src={`/categorias/${categoria.rubroName.toLowerCase()}/${categoria.image}`}
@@ -87,7 +88,7 @@ export default function SliderCategorias({ categorias, maxItems }: Props) {
                                         height={320}
                                         className="border bg-white h-60 rounded-2xl object-cover"
                                     />
-                                    <p className="h-10 mt-2 text-sm">{categoria.name.toUpperCase()}</p>
+                                    <p className="h-10 mt-2 text-lg">{categoria.name.toUpperCase()}</p>
                                 </div>
                             </motion.div>
                     ))
