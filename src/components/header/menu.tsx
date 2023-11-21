@@ -55,7 +55,7 @@ async function getRubrosMenu() {
     }))
     const productsMenu: MenuType= {
         key: 'productos',
-        href: `#productos`,
+        href: `/#productos`,
         subMenu: rubrosSubMenus,
     }
 
@@ -72,7 +72,7 @@ async function getBrandsMenu() {
     }))
     const productsMenu: MenuType= {
         key: 'marcas',
-        href: '#marcas',
+        href: '/#marcas',
         subMenu: subMenus,
     }
 

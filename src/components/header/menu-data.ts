@@ -16,7 +16,7 @@ export const publicMenu: MenuType[]= [
         },
         {
             key: 'quiénes somos',
-            href: '#quienes-somos',
+            href: '/#quienes-somos',
         },
         // { 
         //     key: 'productos',
