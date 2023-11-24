@@ -44,7 +44,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
                 <Header><Menu /></Header>
                 <MobileSidebar />
 
-                <div className="flex flex-col items-center flex-1 pt-20">
+                <div className="flex flex-col items-center flex-1 md:pt-20">
                   <div className='flex-1 w-full'>{children}</div>
                   <Toaster />
                 </div>

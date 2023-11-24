@@ -17,14 +17,14 @@ export default function MenuComponent({ menu }: Props) {
 
     return (
         <NavigationMenu>
-            <NavigationMenuList>
+            <NavigationMenuList >
             {                
                 menu.map((item, index) => (
                     !item.subMenu ? simpleItem(item) :
 
                     <NavigationMenuItem key={index}>
                         <NavigationMenuTrigger>
-                          <Link href={item.href} className="uppercase text-lg tracking-tighter">
+                          <Link href={item.href} className="uppercase lg:text-lg tracking-tighter">
                             {item.key}
                           </Link>
                         </NavigationMenuTrigger>
@@ -56,7 +56,7 @@ function simpleItem(menu: MenuType) {
 
     return (
         <Link key={menu.key} href={menu.href}>
-          <Button variant="ghost" className="uppercase text-lg tracking-tighter">{menu.key}
+          <Button variant="ghost" className="uppercase lg:text-lg tracking-tighter">{menu.key}
           </Button>
         </Link>
     )

@@ -10,7 +10,7 @@ export default function QuienesSomos() {
           <Image src="/botella_v2.png" alt="Quiénes somos" width={600} height={300} className="object-fill" />
         </div>
         <div className="flex-1 items-center flex flex-col justify-center ">
-          <div className="py-10">
+          <div className="py-10 px-2">
             <h2 className={cn(helveticaMedium.className, "text-3xl sm:text-4xl mb-2")}>QUIÉNES SOMOS</h2>
 
             <p className="max-w-[384px] leading-5">
