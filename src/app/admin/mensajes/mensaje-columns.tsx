@@ -5,6 +5,7 @@ import { MensajeDAO } from "@/services/mensaje-services";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import { DeleteMensajeDialog, MensajeDialog } from "./mensaje-dialogs";
+import { format } from "date-fns";
 
 export const columns: ColumnDef<MensajeDAO>[] = [
   {
@@ -53,6 +54,27 @@ export const columns: ColumnDef<MensajeDAO>[] = [
         </Button>
       );
     },
+  },
+
+  {
+    accessorKey: "createdAt",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          className="pl-0 dark:text-white"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Fecha
+          <ArrowUpDown className="w-4 h-4 ml-1" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => {
+      const data = row.original
+      const formattedDate = format(data.createdAt, "dd/MM/yyyy")
+      return <span>{formattedDate}</span>;
+    }
   },
 
   // {
