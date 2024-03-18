@@ -15,7 +15,7 @@ export type MensajeDAO = {
 export async function getMensajesDAO() {
   const found = await prisma.mensaje.findMany({
     orderBy: {
-      id: 'asc'
+      createdAt: "desc"
     },
   })
   return found as MensajeDAO[]
