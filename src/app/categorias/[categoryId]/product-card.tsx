@@ -23,9 +23,12 @@ export function ProductCard({ id, title, description, image, href }: Props) {
               <h1 className={cn(helveticaMedium.className, "text-3xl sm:text-4xl mb-2")}>{title}</h1> 
               <h2 className="leading-6 text-lg whitespace-pre-line">{description}</h2>
           </div>
-          <Link href={href || "#"} target="_blank">
+          {
+            href && 
+            <Link href={href} target="_blank">
               <Button className="mt-4 font-bold w-56 gap-3" size="sm"><p className="mt-1.5">MÁS INFORMACIÓN</p> <ExternalLink size={21} /></Button>  
-          </Link>
+            </Link>
+          }
       </div>
     </div>
   )
