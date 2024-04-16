@@ -24,6 +24,7 @@ export default async function MarcaPage({ params, searchParams }: Props) {
     const product= productId && await getProductDAO(productId)
 
     const products= category.products
+    const totalProducts= products.length
 
     if (productId) {
         const index= products.findIndex((m) => m.id === productId)
@@ -50,12 +51,14 @@ export default async function MarcaPage({ params, searchParams }: Props) {
                     />
                 }
                 {
-                    products.length > 0 ?
+                    products.length > 0 &&
                     <>
                                     <SliderProducts products={products} maxItems={4}/>
                                     <SliderProducts products={products} maxItems={2}/>
                     </>
-                    :
+                }
+                {
+                    totalProducts === 0 &&
                     <p className="text-2xl font-bold mt-10">No hay productos en este categoría</p>
                 }
                 <Footer />
