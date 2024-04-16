@@ -1,12 +1,8 @@
 "use client"
 
-import { useStoreSlug } from "@/app/admin/users/use-roles"
-import { Button } from "@/components/ui/button"
 import { toast } from "@/components/ui/use-toast"
-import { Loader, Pencil, Upload } from "lucide-react"
 import { CldUploadButton } from "next-cloudinary"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
 import { useState } from "react"
 
 const CLOUDINARY_PRESET= process.env.NEXT_PUBLIC_CLOUDINARY_PRESET

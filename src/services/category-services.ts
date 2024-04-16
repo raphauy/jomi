@@ -5,9 +5,9 @@ import { ProductDAO } from "./product-services"
 export type CategoryDAO = {
   id: string
 	name: string
-	description?: string | null
-	image?: string | null
-  rubroId: string | null
+	description?: string
+	image?: string
+  rubroId: string | undefined
   rubroName: string 
   products: ProductDAO[]
 }
@@ -93,9 +93,9 @@ export async function getCategoryDAO(id: string) {
   const res: CategoryDAO = {
     id: found.id,
     name: found.name,
-    description: found.description,
-    image: found.image,
-    rubroId: found.rubroId,
+    description: found.description || "",
+    image: found.image || "",
+    rubroId: found.rubroId || "",
     rubroName: found.rubro?.name || "",
     // @ts-ignore
     products: found.products
