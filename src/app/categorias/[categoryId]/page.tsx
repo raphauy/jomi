@@ -49,8 +49,15 @@ export default async function MarcaPage({ params, searchParams }: Props) {
                     href={product.link}
                     />
                 }
-                <SliderProducts products={products} maxItems={4}/>
-                <SliderProducts products={products} maxItems={2}/>
+                {
+                    products.length > 0 ?
+                    <>
+                                    <SliderProducts products={products} maxItems={4}/>
+                                    <SliderProducts products={products} maxItems={2}/>
+                    </>
+                    :
+                    <p className="text-2xl font-bold mt-10">No hay productos en este categoría</p>
+                }
                 <Footer />
             </div>            
         </section>

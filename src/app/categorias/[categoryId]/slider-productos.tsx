@@ -58,7 +58,10 @@ export default function SliderProducts({ products, maxItems }: Props) {
         hidden: { y: 20, opacity: 0 },
         visible: { y: 0, opacity: 1, transition: { duration: 2 }},
     };
+
+    console.log(products)
     
+
     return (
         <section className={cn("hidden flex-col items-center justify-center mb-1", maxItems === 4 && "md:flex", maxItems === 2 && "flex md:hidden")}>
             <div className="w-full flex items-center gap-1">
