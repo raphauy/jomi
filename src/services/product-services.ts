@@ -1,20 +1,25 @@
 import * as z from "zod"
 import { prisma } from "@/lib/db"
+import { ImageDAO } from "./image-services"
 
 export type ProductDAO = {
   id:  string
 	name:  string
 	description:  string
+  link: string | undefined
 	createdAt:  Date
 	updatedAt:  Date
 	categoryId:  string
   categoryName: string
+  images: ImageDAO[]
 }
 
 export const productFormSchema = z.object({
 	name: z.string({required_error: "Name is required."}),
 	description: z.string({required_error: "Description is required."}),
+  link: z.string().optional(),
 	categoryId: z.string({required_error: "CategoryId is required."}),
+  images: z.object({ url: z.string() }).array(),
 })
 export type ProductFormValues = z.infer<typeof productFormSchema>
 
@@ -24,7 +29,8 @@ export async function getProductsDAO() {
       id: 'asc'
     },
     include: {
-      category: true
+      category: true,
+      images: true
     }
   })
   const res = found.map((product) => {
@@ -32,10 +38,12 @@ export async function getProductsDAO() {
       id: product.id,
       name: product.name,
       description: product.description,
+      link: product.link,
       createdAt: product.createdAt,
       updatedAt: product.updatedAt,
       categoryId: product.categoryId,
-      categoryName: product.category?.name
+      categoryName: product.category?.name,
+      images: product.images
     }
   })
   return res as ProductDAO[]
@@ -47,7 +55,8 @@ export async function getProductDAO(id: string) {
       id
     },
     include: {
-      category: true
+      category: true,
+      images: true
     }
   })
   if (!found) {
@@ -57,28 +66,66 @@ export async function getProductDAO(id: string) {
     id: found.id,
     name: found.name,
     description: found.description,
+    link: found.link,
     createdAt: found.createdAt,
     updatedAt: found.updatedAt,
     categoryId: found.categoryId,
-    categoryName: found.category?.name
+    categoryName: found.category?.name,
+    images: found.images
   }
   return res as ProductDAO
 }
     
 export async function createProduct(data: ProductFormValues) {
+  if (data.images.length === 0) {
+    throw new Error("el producto debe tener al menos una imágen.")
+  }
+
   const created = await prisma.product.create({
-    data
+    data: {
+      ...data,
+      images: {
+        create: data.images.map((image) => ({
+          url: image.url
+        }))
+      }
+    }
   })
   return created
 }
 
 export async function updateProduct(id: string, data: ProductFormValues) {
-  const updated = await prisma.product.update({
+  
+  await prisma.product.update({
     where: {
       id
     },
-    data
+    data: {
+      name: data.name,
+      description: data.description,
+      link: data.link,
+      categoryId: data.categoryId,
+      images: {
+        deleteMany: {},
+      },
+    },
+  });
+
+  const updated= await prisma.product.update({
+    where: {
+      id
+    },
+    data: {
+      images: {
+        createMany: {
+          data: [
+            ...data.images.map((image: { url: string }) => image),
+          ],
+        },
+      },
+    },
   })
+
   return updated
 }
 

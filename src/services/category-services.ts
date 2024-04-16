@@ -1,13 +1,15 @@
 import * as z from "zod"
 import { prisma } from "@/lib/db"
+import { ProductDAO } from "./product-services"
 
 export type CategoryDAO = {
   id: string
 	name: string
-	description?: string
-	image?: string
-  rubroId: string
-  rubroName: string
+	description?: string | null
+	image?: string | null
+  rubroId: string | null
+  rubroName: string 
+  products: ProductDAO[]
 }
 
 export const categoryFormSchema = z.object({
@@ -24,7 +26,8 @@ export async function getCategorysDAO() {
       id: 'asc'
     },
     include: {
-      rubro: true
+      rubro: true,
+      products: true
     }
   })
   const res = found.map((category) => {
@@ -34,7 +37,8 @@ export async function getCategorysDAO() {
       description: category.description,
       image: category.image,
       rubroId: category.rubroId,
-      rubroName: category.rubro?.name || ""
+      rubroName: category.rubro?.name || "",
+      products: category.products
     }
   })
 
@@ -50,7 +54,8 @@ export async function getCategoriesByRubroDAO(rubroId: string) {
       id: 'asc'
     },
     include: {
-      rubro: true
+      rubro: true,
+      products: true
     }
   })
   const res = found.map((category) => {
@@ -60,7 +65,8 @@ export async function getCategoriesByRubroDAO(rubroId: string) {
       description: category.description,
       image: category.image,
       rubroId: category.rubroId,
-      rubroName: category.rubro?.name || ""
+      rubroName: category.rubro?.name || "",
+      products: category.products
     }
   })
 
@@ -73,19 +79,26 @@ export async function getCategoryDAO(id: string) {
       id
     },
     include: {
-      rubro: true
+      rubro: true,
+      products: {
+        include: {
+          images: true,          
+        }
+      }
     }    
   })
   if (!found) {
     return null
   }
-  const res = {
+  const res: CategoryDAO = {
     id: found.id,
     name: found.name,
     description: found.description,
     image: found.image,
     rubroId: found.rubroId,
-    rubroName: found.rubro?.name || ""
+    rubroName: found.rubro?.name || "",
+    // @ts-ignore
+    products: found.products
   }
 
   return res as CategoryDAO

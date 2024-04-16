@@ -21,6 +21,24 @@ export async function createOrUpdateProductAction(id: string | null, data: Produ
   return updated as ProductDAO
 }
 
+export async function createProductAction(data: ProductFormValues): Promise<ProductDAO | null> {        
+
+  const updated= await createProduct(data)
+
+  revalidatePath("/[storeSlug]/products", "page")
+
+  return updated as ProductDAO
+}
+
+export async function updateProductAction(id: string, data: ProductFormValues): Promise<ProductDAO | null> {       
+  const updated= await updateProduct(id, data)
+
+  revalidatePath("/[storeSlug]/products", "page")
+
+  return updated as ProductDAO
+}
+
+
 export async function deleteProductAction(id: string): Promise<ProductDAO | null> {    
   const deleted= await deleteProduct(id)
 

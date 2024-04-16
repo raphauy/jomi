@@ -27,6 +27,7 @@ import {
 import { Loader } from "lucide-react";
 import { CategoryDAO } from "@/services/category-services";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 
 type Props = {
   id?: string;
@@ -147,7 +148,7 @@ export function ProductForm({ id, closeDialog }: Props) {
               <FormItem>
                 <FormLabel>Description</FormLabel>
                 <FormControl>
-                  <Input placeholder="Product's description" {...field} />
+                  <Textarea rows={5} placeholder="Product's description" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

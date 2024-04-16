@@ -78,10 +78,12 @@ model Product {
   id          String   @id @default(cuid())
   name        String
   description String
+  link        String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   category    Category? @relation(fields: [categoryId], references: [id])
   categoryId  String?
+  images      Image[]
 }
 
 model Marca {
@@ -102,4 +104,17 @@ model Mensaje {
   contenido   String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model Image {
+  id          String    @id @default(cuid())
+  url         String                             // gennext: show.column
+
+  createdAt   DateTime    @default(now())        // gennext: skip.zod
+  updatedAt   DateTime    @updatedAt             // gennext: skip.zod
+
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId   String
+
+  @@index([productId])                           // gennext: show.list skip.zod
 }

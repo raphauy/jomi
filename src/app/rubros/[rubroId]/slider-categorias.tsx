@@ -78,18 +78,21 @@ export default function SliderCategorias({ categorias, maxItems }: Props) {
                     {
                         currentCategorias.map((categoria, index) => (
                             <motion.div key={categoria.id} variants={itemVariants}>
-                                <div key={categoria.id}
-                                    className={cn(helveticaRoman.className, "flex flex-col text-black relative h-80 w-40 items-center justify-center")}
-                                >
-                                    <Image
-                                        src={`/categorias/${categoria.rubroName.toLowerCase()}/${categoria.image}`}
-                                        alt={categoria.name}
-                                        width={320}
-                                        height={320}
-                                        className="border bg-white h-60 rounded-2xl object-cover"
-                                    />
-                                    <p className="h-10 mt-2 text-lg">{categoria.name.toUpperCase()}</p>
-                                </div>
+                                <Link href={`/categorias/${categoria.id}`}>  
+
+                                    <div key={categoria.id}
+                                        className={cn(helveticaRoman.className, "flex flex-col text-black relative h-80 w-40 items-center justify-center")}
+                                    >
+                                        <Image
+                                            src={`/categorias/${categoria.rubroName.toLowerCase()}/${categoria.image}`}
+                                            alt={categoria.name}
+                                            width={320}
+                                            height={320}
+                                            className="border bg-white h-60 rounded-2xl object-cover"
+                                        />
+                                        <p className="h-10 mt-2 text-lg">{categoria.name.toUpperCase()}</p>
+                                    </div>
+                                </Link>
                             </motion.div>
                     ))
                     }

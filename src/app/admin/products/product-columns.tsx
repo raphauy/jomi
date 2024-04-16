@@ -3,10 +3,28 @@
 import { Button } from "@/components/ui/button";
 import { ProductDAO } from "@/services/product-services";
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown } from "lucide-react";
+import { ArrowUpDown, Pencil } from "lucide-react";
 import { DeleteProductDialog, ProductDialog } from "./product-dialogs";
+import Link from "next/link";
+import Image from "next/image";
 
 export const columns: ColumnDef<ProductDAO>[] = [
+  {
+    accessorKey: "image",
+    header: ({ column }) => {
+      return (<p></p>)
+    },
+    cell: ({ row }) => {
+      const data = row.original;
+      const firstImage = data.images[0].url;
+      return (
+        <div className="flex items-center justify-center h-20 w-20 rounded-full">  
+          <Image src={firstImage} alt="product-image" width={128} height={128} />  
+        </div>
+      );
+    }
+  },
+
   {
     accessorKey: "name",
     header: ({ column }) => {
@@ -63,7 +81,11 @@ export const columns: ColumnDef<ProductDAO>[] = [
 
       return (
         <div className="flex items-center justify-end gap-2">
-          <ProductDialog id={data.id} />
+          <Link href={`/admin/products/${data.id}`} >
+            <Button variant="ghost">
+              <Pencil />
+            </Button>
+          </Link>
           <DeleteProductDialog description={description} id={data.id} />
         </div>
       );

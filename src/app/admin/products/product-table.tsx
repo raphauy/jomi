@@ -1,46 +1,37 @@
 "use client";
 
 import * as React from "react";
-import { Table as TanstackTable } from "@tanstack/react-table";
-import { DataTableViewOptions } from "@/components/data-table/data-table-view-options";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { X } from "lucide-react";
-import {
-  ColumnDef,
-  ColumnFiltersState,
-  SortingState,
-  VisibilityState,
-  flexRender,
-  getCoreRowModel,
-  getFacetedRowModel,
-  getFacetedUniqueValues,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
-import { DataTablePagination } from "@/components/data-table/data-table-pagination";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { Table as TanstackTable } from "@tanstack/react-table"
+import { DataTableViewOptions } from "@/components/data-table/data-table-view-options"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { X } from "lucide-react"
+import { ColumnDef, ColumnFiltersState, SortingState, VisibilityState, flexRender, getCoreRowModel, getFacetedRowModel, getFacetedUniqueValues, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table"
+import { DataTablePagination } from "@/components/data-table/data-table-pagination"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { DataTableFacetedFilter } from "@/components/data-table/data-table-faceted-filter";
 
 interface DataTableToolbarProps<TData> {
   table: TanstackTable<TData>;
+  categoryNames: string[];
 }
 
 export function DataTableToolbar<TData>({
   table,
+  categoryNames
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
 
   return (
     <div className="flex gap-1 dark:text-white">
+      {table.getColumn("categoryName") && categoryNames && (
+        <DataTableFacetedFilter
+          column={table.getColumn("categoryName")}
+          title="Categoría"
+          options={categoryNames}
+        />
+      )}
+
       <Input
         className="max-w-xs"
         placeholder="name filter..."
@@ -61,24 +52,6 @@ export function DataTableToolbar<TData>({
         }
       />
 
-      <Input
-        className="max-w-xs"
-        placeholder="categoryId filter..."
-        value={
-          (table.getColumn("categoryId")?.getFilterValue() as string) ?? ""
-        }
-        onChange={(event) =>
-          table.getColumn("categoryId")?.setFilterValue(event.target.value)
-        }
-      />
-
-      {/* {table.getColumn("role") && roles && (
-          <DataTableFacetedFilter
-            column={table.getColumn("role")}
-            title="Rol"
-            options={roles}
-          />
-        )} */}
       {isFiltered && (
         <Button
           variant="ghost"
@@ -101,6 +74,7 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
   columnsOff?: string[];
   subject: string;
+  categoryNames: string[];
 }
 
 export function DataTable<TData, TValue>({
@@ -108,6 +82,7 @@ export function DataTable<TData, TValue>({
   data,
   columnsOff,
   subject,
+  categoryNames
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
@@ -148,7 +123,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="w-full space-y-4 dark:text-white">
-      <DataTableToolbar table={table} />
+      <DataTableToolbar table={table} categoryNames={categoryNames} />
       <div className="border rounded-md">
         <Table>
           <TableHeader>
