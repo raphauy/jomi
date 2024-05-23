@@ -1,16 +1,16 @@
-import { Toaster } from '@/components/ui/toaster'
-import './globals.css'
-import type { Metadata, Viewport } from 'next'
-import { ThemeProvider } from '@/components/shadcn/theme-provider'
 import SessionProvider from '@/components/SessionProvider'
+import { MobileSidebar } from '@/components/header/_mobile/mobile-sidebar'
 import Header from '@/components/header/header'
 import Menu from '@/components/header/menu'
 import { TailwindIndicator } from '@/components/shadcn/tailwind-indicator'
-import { cn } from '@/lib/utils'
+import { ThemeProvider } from '@/components/shadcn/theme-provider'
+import { Toaster } from '@/components/ui/toaster'
 import getSession from '@/lib/auth'
-import { MobileSidebar } from '@/components/header/_mobile/mobile-sidebar'
-import { butlerBlack, butlerBold, butlerLight, butlerMedium, butlerRegular, helveticaBlack, helveticaBold, helveticaHeavy, helveticaMedium, helveticaRoman, helveticaThin } from '@/lib/fonts'
-import Footer from './_components/footer'
+import { helveticaMedium } from '@/lib/fonts'
+import { cn } from '@/lib/utils'
+import type { Metadata, Viewport } from 'next'
+import './globals.css'
+import { Analytics } from "@vercel/analytics/react"
 
 
 export const metadata: Metadata = {
@@ -46,6 +46,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
 
                 <div className="flex flex-col items-center flex-1 md:pt-20">
                   <div className='flex-1 w-full'>{children}</div>
+                  <Analytics />
                   <Toaster />
                 </div>
               </div>            
