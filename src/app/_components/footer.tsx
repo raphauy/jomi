@@ -19,7 +19,7 @@ export default function Footer() {
           <p className="leading-4 mb-3">
             Ruta 67 km 24.200<br />
             POLO LOGISTICO LAS PIEDRAS,<br />
-            Nave 9
+            Nave 14
           </p>
           <p className="border-t my-1 w-32" />
           <Link href="mailto:administracion@jomirepresentaciones.com.uy" target="_blank" className="flex text-xs sm:text-base">
