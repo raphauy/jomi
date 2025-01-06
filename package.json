@@ -41,7 +41,7 @@
     "geist": "^1.1.0",
     "inquirer": "^9.2.12",
     "lucide-react": "^0.292.0",
-    "next": "latest",
+    "next": "14.2.8",
     "next-auth": "^4.24.4",
     "next-cloudinary": "^6.16.0",
     "next-themes": "^0.2.1",
