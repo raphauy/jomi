@@ -86,6 +86,11 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     }
   }
 
+  function handleImageChange(url: string) {
+    console.log(url)
+    form.setValue('images', [...form.getValues('images'), { url }])
+  }
+
   return (
     <>
      <div className="flex items-center justify-between">
@@ -111,7 +116,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                   <ImageUpload 
                     value={field.value.map((image) => image.url)} 
                     disabled={loading} 
-                    onChange={(url) => field.onChange([...field.value, { url }])}
+                    onChange={handleImageChange}
                     onRemove={(url) => field.onChange([...field.value.filter((current) => current.url !== url)])}
                   />
                 </FormControl>
